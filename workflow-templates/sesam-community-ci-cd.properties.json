@@ -1,0 +1,8 @@
+{
+    "name": "Sesam Community CI&CD Workflow",
+    "description": "Sesam Community CI&CD Workflow Template",
+    "iconName": "sesamlogo",
+    "filePatterns": [
+        "^Dockerfile"
+    ]
+}

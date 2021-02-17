@@ -1,0 +1,22 @@
+name: SesamCommunity CI&CD
+
+on: [push, pull_request, release]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        env:
+          GITHUB_REPO: ${{ github.repository }}
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+          GITHUB_REF: ${{ github.ref }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          # DOCKER_REPO_NAME: uncomment_and_set_to_docker_repo_name
+        run: bash <(curl -s https://raw.githubusercontent.com/sesam-community/guidelines/git-actions/git_action.sh)
+        shell: bash
